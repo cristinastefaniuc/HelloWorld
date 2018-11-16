@@ -10,6 +10,21 @@
 <body>
 
 <form:form action="/show-users" method="POST">
+<a href="/show-users/FEMALE">Show females</a>
+<a href="/show-users/MALE">Show males</a>
+<br>
+
+<form:form action="/show-users/by-gender" method="GET" style="border: none;">
+    <input type="radio" name="gender" value="FEMALE"> FEMALE
+    <br>
+    <input type="radio" name="gender" value="MALE"> MALE
+    <br>
+    <input type = "submit" value="Submit">
+</form:form>
+
+
+
+<form:form action="/show-users" method="POST" style="border: none;">
     <label>
         <input type="text" name="status">
     </label>

@@ -1,15 +1,21 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: mbezaliuc
+  Date: 11/13/2018
+  Time: 6:03 PM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <title>Title</title>
     <link rel="stylesheet" href="../resources/style/style.css">
-    <title>Login page</title>
 </head>
 <body>
 <div align="center">
     <div style="width: 300px; height: 500px;">
-        <form:form method="POST" action="/login" modelAttribute="user" cssClass="frm">
+        <form:form method="POST" action="/register" modelAttribute="user">
             <div class="imgcontainer">
                 <img src="../resources/pictures/incognito.jpg" alt="Avatar" class="avatar">
             </div>
@@ -17,17 +23,20 @@
 
             <div class="container" align="left">
                 <label>Username</label>
-                <input type="text" name="username" required="required" class="inp"/>
+                <input type="text" name="username" required="required"/>
 
                 <label>Password</label>
-                <input type="password" name="password" required="required" class="inp"/>
+                <input type="password" name="password" required="required"/>
+
+                <label>Age</label>
+                <input type="text" name="age" required="required"/>
+
+                <input type="radio" name="gender" value="FEMALE"> FEMALE
+                <input type="radio" name="gender" value="MALE"> MALE
+                <br>
 
                 <p style="color:red">${error}</p>
-                <button type="submit" class="btn">Login</button>
                 <button type="submit">Login</button>
-                <div align="center">
-                    <a href="/register">Register now!</a>
-                </div>
             </div>
         </form:form>
     </div>

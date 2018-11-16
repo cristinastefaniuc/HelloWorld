@@ -1,6 +1,7 @@
 package com.endava.amcourse.mvc.model;
 
 import lombok.*;
+import static com.endava.amcourse.mvc.model.Status.ACTIVE;
 
 import javax.persistence.*;
 
@@ -32,6 +33,7 @@ public class User {
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status = ACTIVE;
+    private Gender gender;
 
 }

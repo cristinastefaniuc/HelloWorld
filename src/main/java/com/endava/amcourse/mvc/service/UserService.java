@@ -1,6 +1,7 @@
 package com.endava.amcourse.mvc.service;
 
 import com.endava.amcourse.mvc.dto.UserDto;
+import com.endava.amcourse.mvc.model.Gender;
 import com.endava.amcourse.mvc.model.Status;
 import com.endava.amcourse.mvc.model.User;
 
@@ -15,6 +16,10 @@ public interface UserService {
 
     List<User> getUsersByStatus(Status status);
 
+    List<User> getUsersByGender(Gender gender);
+
     boolean validateUser(UserDto userDto);
+
+    void add(User user);
 
 }

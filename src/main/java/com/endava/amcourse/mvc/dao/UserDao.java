@@ -1,5 +1,6 @@
 package com.endava.amcourse.mvc.dao;
 
+import com.endava.amcourse.mvc.model.Gender;
 import com.endava.amcourse.mvc.model.Status;
 import com.endava.amcourse.mvc.model.User;
 
@@ -13,5 +14,9 @@ public interface UserDao {
     Optional<User> getUserById(int id);
 
     List<User> getUsersByStatus(Status status);
+
+    List<User> getUsersByGender(Gender gender);
+
+    void persist(User user); // method to save registered user in Database
 
 }

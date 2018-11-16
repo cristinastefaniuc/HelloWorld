@@ -2,6 +2,7 @@ package com.endava.amcourse.mvc.service.impl;
 
 import com.endava.amcourse.mvc.dao.UserDao;
 import com.endava.amcourse.mvc.dto.UserDto;
+import com.endava.amcourse.mvc.model.Gender;
 import com.endava.amcourse.mvc.model.Status;
 import com.endava.amcourse.mvc.model.User;
 import com.endava.amcourse.mvc.service.UserService;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +33,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> getUsersByGender(Gender gender) {
+        return Collections.emptyList(); //TODO implement this method
+    }
+
+    @Override
     public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }
@@ -39,5 +46,10 @@ public class UserServiceImpl implements UserService {
     public boolean validateUser(UserDto userDto) {
         return userDao.getAllUsers().stream()
                 .anyMatch(u -> userDto.getUsername().equals(u.getUsername()) && userDto.getPassword().equals(u.getPassword()));
+    }
+
+    @Override
+    public void add(User user) {
+        //TODO call dao method
     }
 }

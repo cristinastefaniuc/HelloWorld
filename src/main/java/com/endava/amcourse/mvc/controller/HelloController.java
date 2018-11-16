@@ -1,6 +1,7 @@
 package com.endava.amcourse.mvc.controller;
 
 import com.endava.amcourse.mvc.dto.UserDto;
+import com.endava.amcourse.mvc.model.Gender;
 import com.endava.amcourse.mvc.model.Status;
 import com.endava.amcourse.mvc.model.User;
 import com.endava.amcourse.mvc.service.UserService;
@@ -53,6 +54,43 @@ public class HelloController {
 
     @RequestMapping(value = "/show-users", method = GET)
     public String showUsers(Model model) {
+        model.addAttribute("userList", userService.getAllUsers());
+        return "users";
+    }
+
+    @RequestMapping(value = "/show-user/by-id/{id}", method = GET)
+    public String showUserById(Model model, @PathVariable(name = "id") int id) {
+        model.addAttribute("userById", userService.getUserById(id));
+        model.addAttribute("userList", userService.getAllUsers());
+        return "users";
+    }
+
+    @RequestMapping(value = "/show-users/by-status", method = GET)
+    public String showUsersByStatus(Model model, @RequestParam(name = "status") String status) {
+        model.addAttribute("userList", userService.getUsersByStatus(Status.valueOf(status)));
+        return "users";
+    }
+
+    @RequestMapping(value = "/show-users/{gender}", method = GET)
+    public String showUsersByGender(Model model, @PathVariable(name = "gender") String gender) {
+        model.addAttribute("userList", userService.getUsersByGender(Gender.valueOf(gender)));
+        return "users";
+    }
+
+    @RequestMapping(value = "/show-users/by-gender", method = GET)
+    public String showUsersByGenderForm(Model model, @RequestParam(name = "gender") String gender) {
+        model.addAttribute("userList", userService.getUsersByGender(Gender.valueOf(gender)));
+        return "users";
+    }
+
+    @RequestMapping(value = "/register", method = GET)
+    public String showRegisterPage() {
+        return "register";
+    }
+
+    @RequestMapping(value = "/register", method = POST)
+    public String takeRegisterValues(Model model, @ModelAttribute("user") User user) {
+        userService.add(user);
         model.addAttribute("userList", userService.getAllUsers());
         return "users";
     }
