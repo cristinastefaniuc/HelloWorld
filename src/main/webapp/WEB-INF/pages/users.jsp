@@ -3,20 +3,25 @@
 <html>
 <head>
     <link rel="stylesheet" href="../resources/style/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="../resources/js/hello.js"></script>
     <title>Users</title>
 </head>
 <body>
-<%--<h3>Selected user = ${userById.username}</h3>--%>
 
-<h3>All users usernames:</h3>
-<c:forEach items="${userList}" var="user">
-    <p>${user.username}</p>
-</c:forEach>
-
-<h3>Json example:</h3>
-<input type="button" style="width: 100px" value="Show users" onclick="getAllUsersAsJson()"/>
+<h3>All users username:</h3>
+<div id="test" class="panel panel-default">
+    <div class="panel-body">
+        <c:forEach items="${userList}" var="user">
+            <p class="hea" style="cursor: pointer" onclick=getUserById(${user.id})>${user.username}</p>
+        </c:forEach>
+        <blockquote class="blockquote">
+            <p id="showUserInfo" class="mb-0 text-danger"></p>
+        </blockquote>
+    </div>
+</div>
+<input type="button" value="JSON example" onclick="getAllUsersAsJson()" class="btn-danger btn-lg"/>
 <div id="users"></div>
 </body>
 </html>

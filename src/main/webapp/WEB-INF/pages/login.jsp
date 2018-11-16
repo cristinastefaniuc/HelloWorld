@@ -9,7 +9,7 @@
 <body>
 <div align="center">
     <div style="width: 300px; height: 500px;">
-        <form:form method="POST" action="/login" modelAttribute="user">
+        <form:form method="POST" action="/login" modelAttribute="user" cssClass="frm">
             <div class="imgcontainer">
                 <img src="../resources/pictures/incognito.jpg" alt="Avatar" class="avatar">
             </div>
@@ -17,13 +17,13 @@
 
             <div class="container" align="left">
                 <label>Username</label>
-                <input type="text" name="username" required="required"/>
+                <input type="text" name="username" required="required" class="inp"/>
 
                 <label>Password</label>
-                <input type="password" name="password" required="required"/>
+                <input type="password" name="password" required="required" class="inp"/>
 
                 <p style="color:red">${error}</p>
-                <button type="submit">Login</button>
+                <button type="submit" class="btn">Login</button>
             </div>
         </form:form>
     </div>

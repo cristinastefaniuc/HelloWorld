@@ -4,16 +4,17 @@
 <html>
 <head>
     <link rel="stylesheet" href="../resources/style/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>Hello page</title>
 </head>
-<h1>Hello, ${username}</h1>
+<body>
 
-<form:form action="/show-users" method="POST" style="border: none;">
+<form:form action="/show-users" method="POST">
     <label>
-        <input type="text" name="status" style="width: 200px; ">
+        <input type="text" name="status">
     </label>
-    <br>
-    <input type="submit" style="width: 200px; background-color: maroon; font-size: medium" value="Take status and show users"/>
+    <input type="submit" value="Take status and show users" class="btn-danger"/>
+    <p style="color:red">${error}</p>
 </form:form>
 
 <c:forEach items="${userList}" var="user">
