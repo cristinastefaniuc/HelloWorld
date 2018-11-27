@@ -89,10 +89,9 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/register", method = POST)
-    public String takeRegisterValues(Model model, @ModelAttribute("user") User user) {
+    public String takeRegisterValues(@ModelAttribute("user") User user) {
         userService.add(user);
-        model.addAttribute("userList", userService.getAllUsers());
-        return "users";
+        return "redirect:/show-users";
     }
 
     @RequestMapping(value = "/json", method = GET)
@@ -105,5 +104,12 @@ public class HelloController {
     @ResponseBody
     public User showUserById(@PathVariable(name = "id") int id) {
         return userService.getUserById(id).get();
+    }
+
+    @RequestMapping(value = "/user/delete-by-id/{userId}", method = GET)
+    public String removeUser(@PathVariable int userId, Model model){
+        userService.deleteUserById(userId);
+        model.addAttribute("userList", userService.getAllUsers());
+        return "users";
     }
 }

@@ -24,7 +24,7 @@
 
                 <p style="color:red">${error}</p>
                 <button type="submit" class="btn">Login</button>
-                <button type="submit">Login</button>
+
                 <div align="center">
                     <a href="/register">Register now!</a>
                 </div>

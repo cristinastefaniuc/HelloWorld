@@ -52,4 +52,13 @@ public class UserDaoImpl implements UserDao {
     public void persist(User user) {
         sessionFactory.getCurrentSession().persist(user); //TODO check if it works properly
     }
+
+    @Override
+    public void deleteUserById(int userId) {
+        sessionFactory.getCurrentSession()
+                .createQuery("DELETE FROM User u " +
+                        "WHERE u.id=:userId")
+                .setParameter("userId", userId)
+                .executeUpdate();
+    }
 }

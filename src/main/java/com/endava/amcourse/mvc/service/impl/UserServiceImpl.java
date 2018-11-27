@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -34,7 +35,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getUsersByGender(Gender gender) {
-        return Collections.emptyList(); //TODO implement this method
+        //FIXME: review total user list and create new DAO method
+        return userDao.getAllUsers().stream()
+                .filter( u -> u.getGender() == gender)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -50,6 +54,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void add(User user) {
-        //TODO call dao method
+        userDao.persist(user);
+    }
+
+    @Override
+    public void deleteUserById(int userId) {
+        userDao.deleteUserById(userId);
     }
 }

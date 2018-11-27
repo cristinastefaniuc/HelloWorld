@@ -19,4 +19,6 @@ public interface UserDao {
 
     void persist(User user); // method to save registered user in Database
 
+    void deleteUserById(int userId);
+
 }

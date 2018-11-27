@@ -14,7 +14,10 @@
 <div id="test" class="panel panel-default">
     <div class="panel-body">
         <c:forEach items="${userList}" var="user">
-            <p class="hea" style="cursor: pointer" onclick=getUserById(${user.id})>${user.username}</p>
+            <p class="hea" style="cursor: pointer" onclick=getUserById(${user.id})>${user.username}
+                <a href="/user/delete-by-id/${user.id}">X</a>
+            </p>
+
         </c:forEach>
         <blockquote class="blockquote">
             <p id="showUserInfo" class="mb-0 text-danger"></p>

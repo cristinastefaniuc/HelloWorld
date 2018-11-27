@@ -1,9 +1,14 @@
 package com.endava.amcourse.mvc.model;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import static com.endava.amcourse.mvc.model.Status.ACTIVE;
 
 import javax.persistence.*;
+
+import java.time.LocalDate;
+import java.util.Date;
 
 import static javax.persistence.GenerationType.*;
 
@@ -28,8 +33,9 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "age")
-    private int age;
+    private LocalDate age;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)

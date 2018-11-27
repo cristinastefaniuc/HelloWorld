@@ -22,4 +22,6 @@ public interface UserService {
 
     void add(User user);
 
+    void deleteUserById(int userId);
+
 }
