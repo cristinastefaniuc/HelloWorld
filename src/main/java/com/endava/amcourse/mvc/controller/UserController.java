@@ -20,7 +20,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 @RequiredArgsConstructor
 @Controller
 @RequestMapping(value = "/")
-public class HelloController {
+public class UserController {
 
     private final UserService userService;
 

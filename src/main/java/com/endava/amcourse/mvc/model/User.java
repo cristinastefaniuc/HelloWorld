@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import static javax.persistence.GenerationType.*;
 
@@ -40,6 +41,10 @@ public class User {
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private Status status = ACTIVE;
+
     private Gender gender;
+
+    @OneToMany
+    private List<Task> taskList;
 
 }
