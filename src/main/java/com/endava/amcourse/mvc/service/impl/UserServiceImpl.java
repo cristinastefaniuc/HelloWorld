@@ -1,6 +1,7 @@
 package com.endava.amcourse.mvc.service.impl;
 
 import com.endava.amcourse.mvc.dao.UserDao;
+import com.endava.amcourse.mvc.dto.UserConverter;
 import com.endava.amcourse.mvc.dto.UserDto;
 import com.endava.amcourse.mvc.model.Gender;
 import com.endava.amcourse.mvc.model.Status;
@@ -60,5 +61,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUserById(int userId) {
         userDao.deleteUserById(userId);
+    }
+
+    @Override
+    public Optional<User> getUserByName(String username) {
+        return userDao.getAllUsers().stream()
+                .filter(u -> username.equals(u.getUsername()))
+                .findFirst();
     }
 }

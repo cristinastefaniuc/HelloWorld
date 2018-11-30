@@ -22,7 +22,7 @@
                 <input type="password" name="password" required="required"/>
 
                 <label>Age</label>
-                <input type="text" name="age" required="required"/>
+                <input type="date" name="age" required="required"/>
 
                 <input type="radio" name="gender" value="FEMALE"> FEMALE
                 <input type="radio" name="gender" value="MALE"> MALE

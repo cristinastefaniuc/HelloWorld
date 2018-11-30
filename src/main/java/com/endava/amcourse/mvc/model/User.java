@@ -42,9 +42,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Status status = ACTIVE;
 
+    @Column(name = "gender")
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private List<Task> taskList;
 
 }

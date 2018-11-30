@@ -24,4 +24,5 @@ public interface UserService {
 
     void deleteUserById(int userId);
 
+    Optional<User> getUserByName(String username);
 }

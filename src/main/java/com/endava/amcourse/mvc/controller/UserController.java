@@ -1,11 +1,12 @@
 package com.endava.amcourse.mvc.controller;
 
-import com.endava.amcourse.mvc.dto.UserDto;
 import com.endava.amcourse.mvc.model.Gender;
 import com.endava.amcourse.mvc.model.Status;
 import com.endava.amcourse.mvc.model.User;
 import com.endava.amcourse.mvc.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,18 +28,6 @@ public class UserController {
     @RequestMapping(value = {"/", "/login"}, method = GET)
     public String showLoginPage() {
         return "login";
-    }
-
-    @RequestMapping(value = "/login", method = POST)
-    public String login(@ModelAttribute("user") UserDto user, Model model) {
-        boolean isValid = userService.validateUser(user);
-        if (isValid) {
-            model.addAttribute("username", user.getUsername());
-            return "hello";
-        } else {
-            model.addAttribute("error", "Username or password are incorrect");
-            return "login";
-        }
     }
 
     @RequestMapping(value = "/show-users", method = POST)
@@ -84,7 +73,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register", method = GET)
-    public String showRegisterPage() {
+    public String showRegisterPage(@ModelAttribute("user") User user) {
         return "register";
     }
 
@@ -111,5 +100,22 @@ public class UserController {
         userService.deleteUserById(userId);
         model.addAttribute("userList", userService.getAllUsers());
         return "users";
+    }
+
+    @RequestMapping(value = "/error", method = GET)
+    public String loginErrorHandler(Model model){
+        model.addAttribute("error", "Login or Password are invalid");
+        return "login";
+    }
+
+    private String getPrincipal() {
+        String userName = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails) principal).getUsername();
+        } else {
+            userName = principal.toString();
+        }
+        return userName;
     }
 }
